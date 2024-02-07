@@ -1,0 +1,49 @@
+.button{
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  border-color: var(--primary-color);
+  color: var(--secondary-color);
+  transition: .5s;
+}
+.button:hover{
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+.placeholder{
+  background-color: var(--bg-color);
+  border-radius: 5px;
+  border-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+.placeholder:focus, .placeholder:active{
+  background-color: var(--bg-color);
+  border-radius: 5px;
+  border-color: var(--primary-color);
+  box-shadow: none;
+  color: var(--secondary-color);
+}
+.text{
+  text-align: justify;
+  color: var(--secondary-color);
+}
+.title{
+  color: var(--secondary-color);
+}
+.condition{
+  color: var(--secondary-color);
+  transition: .3s;
+}
+.condition:hover{
+  color: var(--primary-color);
+}
+.icon{
+  color: var(--secondary-color);
+  font-size: 30px;
+  align-items: center;
+  transition: .3s;
+}
+.icon:hover{
+  color: var(--primary-color);
+}

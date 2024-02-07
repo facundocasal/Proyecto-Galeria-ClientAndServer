@@ -1,0 +1,37 @@
+.formLabel{
+    color: var(--secondary-color);
+}
+.formPlaceholder{
+  background: var(--bg-color);
+  border: none;
+  border-bottom: 1px solid var(--secondary-color);
+}
+.formPlaceholder:focus{
+  background: var(--bg-color);
+  border-bottom: 2px solid var(--primary-color);
+  color: var(--secondary-color);
+}
+.cardPassword{
+  background: var(--bg-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+}
+.button{
+  margin: 10px;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  border-color: var(--primary-color);
+  transition: .5s;
+}
+.button:hover{
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  border-color: var(--primary-color);
+  color: var(--primary-color)
+}
+.text{
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+}
+

@@ -1,0 +1,56 @@
+.bgHome{
+  background-color: var(--bg-color);
+}
+
+.formTitle{
+  color: var(--primary-color);
+}
+
+.buttonForm{
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: #fff;
+  font-size: 15px;
+  border-radius: 2px;
+  padding: 8px 24px;
+}
+
+.buttonForm:hover{
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  border: 1px solid var(--primary-color);
+  transition: .3s;
+}
+
+.icon{
+  font-size: 22px;
+  color: var(--primary-color);
+}
+
+.text{
+  color: var(--secondary-color)
+}
+
+.textInput{
+  color: var(--secondary-color);
+  margin: 5px;
+}
+
+.error{
+  color: var(--primary-color);
+}
+
+.inputStyle{
+  background-color: var(--bg-color);
+  border-radius: 5px;
+  border-color: var(--primary-color);
+  color: var(--secondary-color);
+  margin: 5px;
+}
+.inputStyle:focus, .inputStyle:active{
+  background-color: var(--bg-color);
+  border-radius: 5px;
+  border-color: var(--primary-color);
+  box-shadow: none;
+  color: var(--secondary-color);
+}

@@ -1,0 +1,94 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+-webkit-appearance: none;
+}
+
+input[type="number"] {
+-moz-appearance: textfield;
+}
+input[type="number"]:hover,
+input[type="number"]:focus {
+-moz-appearance: number-input;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+}
+
+:root{
+  --primary-color: #D44F80;
+  --secondary-color: #FFF8D2;
+  --bg-color: #050914;
+  --bg-color-secondary: #0A1326;
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Swiper styles */
+
+.swiper-button-next:after, .swiper-button-prev:after{
+  font-size: 25px !important;
+}
+
+.swiper-button-next, .swiper-button-prev{
+  color: var(--primary-color) !important;
+}
+.customChip{
+  margin-bottom: 20px;
+  color:#fff
+}
+
+.customChip .form-control {
+  background-color: transparent; 
+  border: 1px solid var(--primary-color);
+  color:#fff
+}
+.customChip .rbt-input-main{
+  color:#FFF;
+}
+.customChip .rbt-input-multi.focus{
+box-shadow: none;
+border-color: #D44F80;
+}
+
+.customChip .rbt-token{
+  color:var(--primary-color);
+  background-color:#FFF;
+}
+/*Modal*/
+
+.init__modal__message{
+  backdrop-filter: blur(11px);
+}
+
+.Alert{
+  background-color: #d44f80!important;
+  color: #fff8d2!important;
+  border-radius: 0px!important;
+}
+.alert-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}

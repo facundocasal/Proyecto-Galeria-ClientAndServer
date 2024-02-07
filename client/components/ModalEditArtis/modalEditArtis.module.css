@@ -1,0 +1,24 @@
+.img{
+  width:100%;
+  max-height:500px;
+  object-fit: contain;
+}
+
+.btnSave{
+  font-size: 1rem;
+  font-weight: bold;
+  width: 50%;
+  height: 70px;
+  border: none;
+}
+.btnLoading{
+  font-size: 1rem;
+  font-weight: bold;
+  width: 50%;
+  height: 70px;
+  background-color: #1a682794;
+  border: none;
+}
+.btnSave:hover{
+  background-color: #d44f8098;
+}

@@ -1,0 +1,10 @@
+.bgHome{
+  background-color: var(--bg-color);
+}
+.title{
+  color: var(--secondary-color);
+}
+.about{
+  color: var(--secondary-color);
+  text-align: justify;
+}

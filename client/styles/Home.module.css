@@ -1,0 +1,46 @@
+.bgHome{
+  background-color: var(--bg-color);
+}
+.controlUser{
+  background: var(--bg-color);
+  min-height: 100vh;
+}
+.icoUser{
+  padding: 10px;
+  color: var(--primary-color);
+  font-size: 100px;
+}
+.title{
+  color:var(--primary-color);
+  text-transform: uppercase;
+}
+.text{
+  color: var(--secondary-color);
+}
+.formLabel{
+  color: var(--secondary-color);
+}
+.formPlaceholder{
+  background: var(--bg-color);
+  border: none;
+  border-bottom: 1px solid var(--secondary-color);
+}
+.formPlaceholder:focus{
+  background: var(--bg-color);
+  border-bottom: 2px solid var(--primary-color);
+  color: var(--secondary-color);
+}
+.cardPassword{
+  background: var(--bg-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+}
+.column{
+  color: var(--secondary-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+.column:hover{
+  color: var(--primary-color);
+  cursor: pointer;
+}

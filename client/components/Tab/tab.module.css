@@ -1,0 +1,30 @@
+.bgTab{
+  background-size: cover;
+  background-position: center;
+}
+
+.tab-nav-link {
+  border: 2px solid transparent;
+  background-color: #00000090;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+.active {
+  border: 2px solid var(--primary-color);
+  background-color: #00000000;
+  text-shadow: 2px 2px 3px #000000;
+  color: var(--secondary-color);
+}
+
+.icon{
+  color: var(--secondary-color);
+}
+
+.iconColor{
+  color: transparent;
+}
+
+
+.text{
+  color: var(--secondary-color);
+}

@@ -1,0 +1,109 @@
+.bgNav {
+  background-color: var(--bg-color);
+}
+
+.containerNav {
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
+
+@media (max-width: 992px) {
+  .containerNav {
+    padding: 0 10px;
+  }
+
+  .collapseMenu {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+  }
+}
+
+.linkImage {
+  cursor: pointer;
+}
+
+.colorLink {
+  color: var(--secondary-color);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.colorLink:hover {
+  color: var(--primary-color);
+}
+
+.colorLink:focus {
+  color: var(--primary-color);
+}
+
+.navCollapse {
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .navCollapse {
+    align-items: flex-end;
+    padding: 5px;
+  }
+}
+
+.buttonStyleGet{
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--secondary-color);
+  font-size: 15px;
+  border-radius: 2px;
+}
+
+.buttonStyleGet:hover{
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.buttonStyleGet:focus{
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.buttonCollapse{
+  background-color: var(--bg-color);
+  border: 1.5px solid var(--primary-color);
+}
+
+.buttonCollIcon{
+  color: var(--secondary-color);
+}
+
+.buttonDropdown{
+  background-color: var(--bg-color);
+  border: 1px solid var(--primary-color);
+  color: var(--secondary-color);
+  font-size: 15px;
+  border-radius: 2px;
+}
+
+.buttonDropdown:hover{
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+}
+
+.buttonDropdown:focus{
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+}
+
+@media (max-width: 992px) {
+  .buttonDropdown::after{
+    transform: rotate(90deg);
+  }
+}
+
+.dropdown{
+  border: 1.5px solid var(--primary-color);
+  background-color: var(--bg-color);
+}

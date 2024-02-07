@@ -1,0 +1,24 @@
+.colorLink{
+  color: var(--secondary-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+.colorLink:hover{
+  color: var(--primary-color);
+  transition: .5s;
+}
+.colorLink:focus{
+  color: var(--primary-color);
+}
+.simbol {
+  padding: 0;
+  width: 1px;
+  height: 60px;
+  background-color: var(--secondary-color);
+}
+.textColorPrimary{
+  color: var(--primary-color);
+}
+.textColorSecondary{
+  color: var(--secondary-color);
+}

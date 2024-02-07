@@ -1,0 +1,11 @@
+.button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-family: 'Roboto Condensed', sans-serif;
+    line-height: 1;
+  }
+  
+  .button:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+  }

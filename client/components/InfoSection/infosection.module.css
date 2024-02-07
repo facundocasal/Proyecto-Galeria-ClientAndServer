@@ -1,0 +1,17 @@
+.box {
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.box:hover {
+  color: var(--primary-color);
+}
+
+.textColorPrimary{
+  color: var(--primary-color);
+}
+
+.textColorSecondary{
+  color: var(--secondary-color);
+}

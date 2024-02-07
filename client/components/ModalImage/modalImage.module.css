@@ -1,0 +1,17 @@
+.icon{
+    color: var(--primary-color);
+    position: absolute;
+    right: 2%;
+    top: 3%;
+    font-size: 3rem;
+    cursor: pointer;
+    background-color: var(--bg-color);
+    line-height: 25px;
+    border-radius: 100%;
+}
+
+@media only screen and (max-width: 740px) {
+    .icon{
+        font-size: 1.7rem;
+    }
+  }

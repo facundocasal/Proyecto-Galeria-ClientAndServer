@@ -1,0 +1,24 @@
+name: Lint
+on:
+  # Trigger the workflow on push or pull request,
+ 
+  push:
+    branches:
+      - lint
+  # Replace pull_request with pull_request_target if you
+  # plan to use this action with forks, see the Limitations section
+  pull_request:
+    branches:
+      - main
+ 
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run eslint scanning
+        run: |
+          npm ci
+          npm run lint-fix

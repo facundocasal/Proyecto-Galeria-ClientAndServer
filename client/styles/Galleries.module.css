@@ -1,0 +1,45 @@
+.bgHome{
+  background-color: var(--bg-color);
+}
+
+.title{
+  color: var(--secondary-color);
+}
+
+.subTitle{
+  color: var(--primary-color);
+}
+
+.button{
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: .618em 1em;
+  font-family: 'Roboto Condensed', sans-serif;
+  line-height: 1;
+}
+
+.button:hover{
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.outlineButton{
+  padding: .618em 1em;
+  font-family: 'Roboto Condensed', sans-serif;
+  line-height: 1;
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.textColor{
+  color: var(--secondary-color);
+  width: 90%;
+  background-color: #050914a9;
+  backdrop-filter: blur(30px)
+}
+
+.contentTitle{
+  color: var(--bg-color);
+  text-shadow: 1px 1px 3px var(--secondary-color);
+}
+
