@@ -1,7 +1,7 @@
-import GeneralModal from '../GeneralModal/GeneralModal';
-import ModalSingIn from '../ModalSingIn/ModalSingIn';
 import PropTypes from 'prop-types';
 import React from 'react';
+import GeneralModal from '../GeneralModal/GeneralModal';
+import ModalSingIn from '../ModalSingIn/ModalSingIn';
 import styles from './infosubs.module.css';
 
 const InfoSubs = ({ className }) => {

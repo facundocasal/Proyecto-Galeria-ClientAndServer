@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import Carousel from "../components/Carousel/Carousel";
-import Error from "../components/Error";
-import Footer from "../components/Footer/Footer";
-import Head from "next/head";
-import InfoSection from "../components/InfoSection/InfoSection";
-import InfoSubs from "../components/InfoSubs/InfoSubs";
-import LoaderInit from "../components/Loader/LoaderInit";
-import ModalSingIn from "../components/ModalSingIn/ModalSingIn";
-import Tab from "../components/Tab/Tab";
-import clientAxios from "../config/clientAxios";
-import { parseCookies } from "nookies";
-import styles from "../styles/Home.module.css";
-import { useShuffle } from "../context/shuffleContext";
+import Head from 'next/head';
+import { parseCookies } from 'nookies';
+import Carousel from '../components/Carousel/Carousel';
+import Error from '../components/Error';
+import Footer from '../components/Footer/Footer';
+import InfoSection from '../components/InfoSection/InfoSection';
+import InfoSubs from '../components/InfoSubs/InfoSubs';
+import LoaderInit from '../components/Loader/LoaderInit';
+import ModalSingIn from '../components/ModalSingIn/ModalSingIn';
+import Tab from '../components/Tab/Tab';
+import clientAxios from '../config/clientAxios';
+import styles from '../styles/Home.module.css';
+import { useShuffle } from '../context/shuffleContext';
 
 const Home = () => {
   const [banners, setBanners] = useState([]);
@@ -60,7 +60,7 @@ const Home = () => {
   if (error) {
     return (
       <Error
-        texto={"Ha ocurrido un error intentalo nuevamente en unos minutos"}
+        texto={'Ha ocurrido un error intentalo nuevamente en unos minutos'}
       />
     );
   }

@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import styles from "./carousel.module.css";
-import { useRouter } from "next/router";
+import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
+import styles from './carousel.module.css';
 
 const Carousel = ({ carouselInfo }) => {
   const { push } = useRouter();
@@ -9,7 +9,7 @@ const Carousel = ({ carouselInfo }) => {
     push(`/galleries/${name}`);
   };
   const goArtiss = () => {
-    push("/artis");
+    push('/artis');
   };
 
   return (
@@ -24,7 +24,7 @@ const Carousel = ({ carouselInfo }) => {
           {carouselInfo.map((info, index) => (
             <div
               className={` ${styles.container_gral} carousel-item ${
-                index === 0 ? "active" : undefined
+                index === 0 ? 'active' : undefined
               }`}
               key={index}
             >
@@ -40,11 +40,11 @@ const Carousel = ({ carouselInfo }) => {
                       className={styles.btn_banner2}
                       onClick={() => goArtis(info?.name)}
                     >
-                      {" "}
+                      {' '}
                       Ver artis
                     </button>
                     <button className={styles.btn_banner} onClick={goArtiss}>
-                      {" "}
+                      {' '}
                       Mas artis
                     </button>
                   </div>
@@ -54,7 +54,7 @@ const Carousel = ({ carouselInfo }) => {
                 src={
                    info?.photoCarrusel
                 }
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                  alt={
                   info?.name
                 }

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
-import clientAxios from '../../config/clientAxios';
-import styles from './cardgallery.module.css';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import clientAxios from '../../config/clientAxios';
+import styles from './cardgallery.module.css';
 
 const CardGallery = ({
   gallery, index = false, role, galeria,
@@ -56,7 +56,7 @@ const CardGallery = ({
             src={coverPhotoGallery}
             alt={
               galleryName
-            } 
+            }
           />
           <div className="text-white px-2 py-1 bg-dark bg-opacity-75 position-absolute bottom-0 end-0 d-flex">
             <i className="bi bi-camera me-1" />

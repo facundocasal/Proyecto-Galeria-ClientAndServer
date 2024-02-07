@@ -1,29 +1,29 @@
-import * as Yup from "yup";
+import * as Yup from 'yup';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import LoaderInit from "../Loader/LoaderInit";
-import Swal from "sweetalert2";
-import UploadMedia from "../UploadMedia/UploadMedia";
-import clientAxios from "../../config/clientAxios";
-import style from "../ModalEditArtis/modalEditArtis.module.css";
-import styles from "./modalEditGallery.module.css";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
-import { yupResolver } from "@hookform/resolvers/yup";
+import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
+import { yupResolver } from '@hookform/resolvers/yup';
+import LoaderInit from '../Loader/LoaderInit';
+import UploadMedia from '../UploadMedia/UploadMedia';
+import clientAxios from '../../config/clientAxios';
+import style from '../ModalEditArtis/modalEditArtis.module.css';
+import styles from './modalEditGallery.module.css';
 
 const ModalEditGallery = ({ galeria }) => {
   const [threPhotos, setThrePhotos] = useState([]);
-  const [blur, setBlur] = useState("");
-  const [cover, setCover] = useState("");
-  const [nameOfTheGalllery, setGalleryName] = useState("");
+  const [blur, setBlur] = useState('');
+  const [cover, setCover] = useState('');
+  const [nameOfTheGalllery, setGalleryName] = useState('');
 
   const [loading, setLoading] = useState(false);
   const { push } = useRouter();
   const UpdateUserSchema = Yup.object().shape({
-    galleryName: Yup.string().required("Nombre es requerido"),
-    price: Yup.number().required("Precio ARS es requerido"),
-    price_USD: Yup.number().required("Precio USD es requerido"),
+    galleryName: Yup.string().required('Nombre es requerido'),
+    price: Yup.number().required('Precio ARS es requerido'),
+    price_USD: Yup.number().required('Precio USD es requerido'),
   });
   const defaultValues = {
     galleryName: galeria?.galleryName,
@@ -63,13 +63,13 @@ const ModalEditGallery = ({ galeria }) => {
       photosShow: threPhotos,
     };
     try {
-      await clientAxios.post("galleries/updateGallerie", dataFinish);
+      await clientAxios.post('galleries/updateGallerie', dataFinish);
       setLoading(false);
-      Swal.fire("Galeria editada correctamente");
+      Swal.fire('Galeria editada correctamente');
       push(`/${data.galleryName}/edit`);
     } catch (error) {
       setLoading(false);
-      Swal.fire("Ocurrio un error");
+      Swal.fire('Ocurrio un error');
       push(`/${data.galleryName}/edit`);
     }
   };
@@ -78,39 +78,39 @@ const ModalEditGallery = ({ galeria }) => {
     Swal.fire({
       title: `Estas seguro que quieres eliminar "${galeria?.galleryName}"?.`,
       showDenyButton: true,
-      color: "#FFF8D2",
-      background: "#0A1326",
-      confirmButtonColor: "#D44F80",
-      confirmButtonText: "Eliminar",
-      denyButtonText: "Cancelar",
-      denyButtonColor: "#D44F80",
+      color: '#FFF8D2',
+      background: '#0A1326',
+      confirmButtonColor: '#D44F80',
+      confirmButtonText: 'Eliminar',
+      denyButtonText: 'Cancelar',
+      denyButtonColor: '#D44F80',
     }).then(async (result) => {
       if (result.isConfirmed) {
         const response = await clientAxios.delete(
-          `galleries/delete/${galeria._id}`
+          `galleries/delete/${galeria._id}`,
         );
         if (response.status !== 400) {
           Swal.fire({
-            icon: "success",
-            iconColor: "#D44F80",
+            icon: 'success',
+            iconColor: '#D44F80',
             title: response.data.message,
-            color: "#FFF8D2",
-            background: "#0A1326",
-            confirmButtonText: "Cerrar",
-            confirmButtonColor: "#D44F80",
+            color: '#FFF8D2',
+            background: '#0A1326',
+            confirmButtonText: 'Cerrar',
+            confirmButtonColor: '#D44F80',
           });
-          push("/galleries");
+          push('/galleries');
         } else {
           Swal.fire({
-            icon: "error",
-            iconColor: "#D44F80",
+            icon: 'error',
+            iconColor: '#D44F80',
             title: response.data.message,
-            color: "#FFF8D2",
-            background: "#0A1326",
-            confirmButtonText: "Cerrar",
-            confirmButtonColor: "#D44F80",
+            color: '#FFF8D2',
+            background: '#0A1326',
+            confirmButtonText: 'Cerrar',
+            confirmButtonColor: '#D44F80',
           });
-          push("/galleries");
+          push('/galleries');
         }
       }
     });
@@ -136,14 +136,14 @@ const ModalEditGallery = ({ galeria }) => {
               htmlFor="nombreGaleria"
               className={`form-label ${styles.label_edit}`}
             >
-              Nombre{" "}
+              Nombre{' '}
             </label>
             <input
               autoComplete="false"
               type="text"
               className="form-control"
               id="nombreGaleria"
-              {...register("galleryName", { required: "Nombre es requerido" })}
+              {...register('galleryName', { required: 'Nombre es requerido' })}
               onChange={(e) => setGalleryName(e.target.value)}
             />
             {errors.galleryName && (
@@ -161,7 +161,7 @@ const ModalEditGallery = ({ galeria }) => {
               type="number"
               className="form-control"
               id="precioArs"
-              {...register("price", { required: "Precio ARS es requerido" })}
+              {...register('price', { required: 'Precio ARS es requerido' })}
             />
             {errors.price && (
               <p className="text-danger">Precio ARS es requerido</p>
@@ -178,8 +178,8 @@ const ModalEditGallery = ({ galeria }) => {
               type="number"
               className="form-control"
               id="precioUsd"
-              {...register("price_USD", {
-                required: "Precio USD es requerido",
+              {...register('price_USD', {
+                required: 'Precio USD es requerido',
               })}
             />
             {errors.price_USD && (
@@ -197,12 +197,12 @@ const ModalEditGallery = ({ galeria }) => {
             <img
               src={cover}
               alt={galeria?.galleryName}
-              style={{ width: "100%" }}
+              style={{ width: '100%' }}
             />
           </div>
           <div
             className="col-md-3 m-2 d-flex"
-            style={{ border: "1px solid #fff", maxHeight: "50px" }}
+            style={{ border: '1px solid #fff', maxHeight: '50px' }}
           >
             <UploadMedia
               multiple={false}
@@ -223,7 +223,7 @@ const ModalEditGallery = ({ galeria }) => {
           ) : (
             <>
               <div>
-                <button type="submit" className={"btn btn-primary m-2 "}>
+                <button type="submit" className={'btn btn-primary m-2 '}>
                   Guardar Cambios
                 </button>
               </div>

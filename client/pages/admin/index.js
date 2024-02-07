@@ -1,21 +1,21 @@
-import Error from "../../components/Error";
-import Head from "next/head";
-import ModalSingIn from "../../components/ModalSingIn/ModalSingIn";
-import { Nav } from "react-bootstrap";
-import NewArtis from "../../components/NewArtis/NewArtis";
-import NewGallery from "../../components/NewGallery/NewGallery";
-import SalesTable from "../../components/SalesTable/SalesTable";
-import UserViewer from "../../components/UsersViewer/UserViewer";
-import jwtDecode from "jwt-decode";
-import styles from "../../styles/Galleries.module.css";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import Head from 'next/head';
+import { Nav } from 'react-bootstrap';
+import jwtDecode from 'jwt-decode';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import Error from '../../components/Error';
+import ModalSingIn from '../../components/ModalSingIn/ModalSingIn';
+import NewArtis from '../../components/NewArtis/NewArtis';
+import NewGallery from '../../components/NewGallery/NewGallery';
+import SalesTable from '../../components/SalesTable/SalesTable';
+import UserViewer from '../../components/UsersViewer/UserViewer';
+import styles from '../../styles/Galleries.module.css';
 
 const Admin = () => {
   const [artis, setArtis] = useState(false);
-  const [activeTab, setActiveTab] = useState("newArtis");
+  const [activeTab, setActiveTab] = useState('newArtis');
 
-  const jwt = localStorage.getItem("accessToken");
+  const jwt = localStorage.getItem('accessToken');
   const role = jwt ? jwtDecode(jwt).role : undefined;
   const router = useRouter();
 
@@ -25,7 +25,7 @@ const Admin = () => {
 
   return (
     <>
-      {role === "admin" ? (
+      {role === 'admin' ? (
         <div className={`min-vh-100 ${styles.bgHome} `}>
           <Head>
             <title>Proyecto Galeria </title>
@@ -47,10 +47,10 @@ const Admin = () => {
                       <Nav.Link
                         className={`${styles.button} ${styles.outlineButton} text-decoration-none rounded`}
                         eventKey="newArtis"
-                        onClick={() => handleTabChange("newArtis")}
+                        onClick={() => handleTabChange('newArtis')}
                         style={{
                           backgroundColor:
-                            activeTab === "newArtis" && "#D44F80",
+                            activeTab === 'newArtis' && '#D44F80',
                         }}
                       >
                         Nueva Artis
@@ -60,10 +60,10 @@ const Admin = () => {
                       <Nav.Link
                         className={`${styles.button} ${styles.outlineButton} text-decoration-none rounded`}
                         eventKey="newGallery"
-                        onClick={() => handleTabChange("newGallery")}
+                        onClick={() => handleTabChange('newGallery')}
                         style={{
                           backgroundColor:
-                            activeTab === "newGallery" && "#D44F80",
+                            activeTab === 'newGallery' && '#D44F80',
                         }}
                       >
                         Nueva Galería
@@ -73,10 +73,10 @@ const Admin = () => {
                       <Nav.Link
                         className={`${styles.button} ${styles.outlineButton} text-decoration-none rounded`}
                         eventKey="userViewer"
-                        onClick={() => handleTabChange("userViewer")}
+                        onClick={() => handleTabChange('userViewer')}
                         style={{
                           backgroundColor:
-                            activeTab === "userViewer" && "#D44F80",
+                            activeTab === 'userViewer' && '#D44F80',
                         }}
                       >
                         Visor de Usuario
@@ -86,10 +86,10 @@ const Admin = () => {
                       <Nav.Link
                         className={`${styles.button} ${styles.outlineButton} text-decoration-none rounded`}
                         eventKey="salesTable"
-                        onClick={() => handleTabChange("salesTable")}
+                        onClick={() => handleTabChange('salesTable')}
                         style={{
                           backgroundColor:
-                            activeTab === "salesTable" && "#D44F80",
+                            activeTab === 'salesTable' && '#D44F80',
                         }}
                       >
                         Tabla de Ventas
@@ -98,24 +98,24 @@ const Admin = () => {
                   </Nav>
                 </div>
               </div>
-              {activeTab === "newArtis" && <NewArtis setArtis={setArtis} />}
-              {activeTab === "newGallery" && <NewGallery artisSelect={artis} />}
-              {activeTab === "userViewer" && <UserViewer />}
-              {activeTab === "salesTable" && <SalesTable />}
+              {activeTab === 'newArtis' && <NewArtis setArtis={setArtis} />}
+              {activeTab === 'newGallery' && <NewGallery artisSelect={artis} />}
+              {activeTab === 'userViewer' && <UserViewer />}
+              {activeTab === 'salesTable' && <SalesTable />}
             </div>
           </main>
         </div>
       ) : (
         <>
-          <Error texto={"This page could not be found."} number={"404"}></Error>
-          {setTimeout(() => router.push("/"), 5000)}
+          <Error texto={'This page could not be found.'} number={'404'}></Error>
+          {setTimeout(() => router.push('/'), 5000)}
         </>
       )}
     </>
   );
 };
 export async function getServerSideProps() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
   const data = await res.json();
 
   return {

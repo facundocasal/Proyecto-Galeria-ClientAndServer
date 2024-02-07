@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import CardCarousel from "../CardCarousel/CardCarousel";
-import PropTypes from "prop-types";
-import styles from "./tab.module.css";
-import { useShuffle } from "../../context/shuffleContext";
+import PropTypes from 'prop-types';
+import CardCarousel from '../CardCarousel/CardCarousel';
+import styles from './tab.module.css';
+import { useShuffle } from '../../context/shuffleContext';
 
 const Tab = ({ galleries, artiss }) => {
   const [activeTab, setActiveTab] = useState(1);
@@ -40,11 +40,11 @@ const Tab = ({ galleries, artiss }) => {
     SetRandomArtisPicture(TAB_RANDOM_ARTIS);
   }, []);
 
-  const TAB_INDEXS = ["pills-galerias", "pills-artiss", "pills-films"];
+  const TAB_INDEXS = ['pills-galerias', 'pills-artiss', 'pills-films'];
   return (
     <>
       <ul
-        className={`row gx-0 nav mb-3 ${styles["nav-pills"]} ${className}`}
+        className={`row gx-0 nav mb-3 ${styles['nav-pills']} ${className}`}
         id="pills-tab"
         role="tablist"
       >
@@ -58,13 +58,13 @@ const Tab = ({ galleries, artiss }) => {
                 role="presentation"
                 style={{
                   backgroundImage: `url("${item.photoCarrusel}")`,
-                  backgroundPosition: "center",
+                  backgroundPosition: 'center',
                 }}
               >
                 <button
                   className={`text-uppercase w-100 py-5 ${
                     activeTab === index && styles.active
-                  } ${styles["tab-nav-link"]}`}
+                  } ${styles['tab-nav-link']}`}
                   id={`${TAB_INDEXS[index]}-tab`}
                   data-bs-toggle="pill"
                   data-bs-target={`#${TAB_INDEXS[index]}`}
@@ -75,9 +75,9 @@ const Tab = ({ galleries, artiss }) => {
                   onClick={() => setActiveTab(index)}
                 >
                   <p className={`fs-5 m-0 ${styles.text}`}>
-                    {index === 0 && "Galerías"}
-                    {index === 1 && "Artiss"}
-                    {index === 2 && "Videos"}
+                    {index === 0 && 'Galerías'}
+                    {index === 1 && 'Artiss'}
+                    {index === 2 && 'Videos'}
                   </p>
                   <div className="d-flex justify-content-center">
                     <i

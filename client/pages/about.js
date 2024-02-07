@@ -1,7 +1,7 @@
-import Footer from "../components/Footer/Footer";
-import Head from "next/head";
-import ModalSingIn from "../components/ModalSingIn/ModalSingIn";
-import styles from "../styles/About.module.css";
+import Head from 'next/head';
+import Footer from '../components/Footer/Footer';
+import ModalSingIn from '../components/ModalSingIn/ModalSingIn';
+import styles from '../styles/About.module.css';
 
 const About = () => {
   return (

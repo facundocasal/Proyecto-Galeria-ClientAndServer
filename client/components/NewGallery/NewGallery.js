@@ -1,37 +1,37 @@
-import * as Yup from "yup";
+import * as Yup from 'yup';
 
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import PropTypes from "prop-types";
-import Swal from "sweetalert2";
-import UploadMedia from "../UploadMedia/UploadMedia";
-import clientAxios from "../../config/clientAxios";
-import { parseCookies } from "nookies";
-import styles from "../../styles/Forms.module.css";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
+import { parseCookies } from 'nookies';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import UploadMedia from '../UploadMedia/UploadMedia';
+import clientAxios from '../../config/clientAxios';
+import styles from '../../styles/Forms.module.css';
 
 const NewGallery = ({ artisSelect }) => {
   const [artis, setArtis] = useState([]);
   const [gallery, setGallery] = useState([]);
-  const [coverPhotoGallery, setCoverPhotoGallery] = useState("");
+  const [coverPhotoGallery, setCoverPhotoGallery] = useState('');
   const [three, setThree] = useState([]);
-  const [censoriship, setCensoriship] = useState("");
+  const [censoriship, setCensoriship] = useState('');
   const [loading, setLoading] = useState(false);
-  const [name, setName] = useState("");
-  const [nameOfTheGalllery, setGalleryName] = useState("");
+  const [name, setName] = useState('');
+  const [nameOfTheGalllery, setGalleryName] = useState('');
 
   const { province } = parseCookies();
   const schema = Yup.object({
-    idArtis: Yup.string().required("Tienes que seleccionar una Artis"),
-    galleryName: Yup.string().required("El nombre de la galeria es requerido"),
+    idArtis: Yup.string().required('Tienes que seleccionar una Artis'),
+    galleryName: Yup.string().required('El nombre de la galeria es requerido'),
     price: Yup.string()
-      .min(2, "El precio debe tener como minimo 2 cifras")
-      .required("El precio es requerido"),
+      .min(2, 'El precio debe tener como minimo 2 cifras')
+      .required('El precio es requerido'),
     price_USD: Yup.string()
-      .min(2, "El precio debe tener como minimo 2 cifras")
-      .required("El precio en dolares es requerido"),
+      .min(2, 'El precio debe tener como minimo 2 cifras')
+      .required('El precio en dolares es requerido'),
   }).required();
 
   const {
@@ -51,13 +51,13 @@ const NewGallery = ({ artisSelect }) => {
     };
 
     clientAxios
-      .post("galleries", dataFinished)
+      .post('galleries', dataFinished)
       .then((response) => {
-        Swal.fire("Galeria creada con exito");
-        setCoverPhotoGallery("");
+        Swal.fire('Galeria creada con exito');
+        setCoverPhotoGallery('');
         setThree([]);
         setGallery([]);
-        setCensoriship("");
+        setCensoriship('');
         setLoading(false);
         window.location.reload();
       })
@@ -67,7 +67,7 @@ const NewGallery = ({ artisSelect }) => {
   const handleArtis = async () => {
     if (province) {
       clientAxios
-        .get("/artis/admin")
+        .get('/artis/admin')
         .then((response) => setArtis(response.data));
     }
   };
@@ -103,7 +103,7 @@ const NewGallery = ({ artisSelect }) => {
   return (
     <form className="" onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-3 pt-5">
-        <h2 style={{ color: "#D44F80" }}>CREAR GALERIA</h2>
+        <h2 style={{ color: '#D44F80' }}>CREAR GALERIA</h2>
         <label
           htmlFor="exampleInputEmail1"
           className={`form-label ${styles.title}`}
@@ -113,19 +113,19 @@ const NewGallery = ({ artisSelect }) => {
         <select
           className={`form-select ${styles.placeholder}`}
           aria-label="Default select example"
-          {...register("idArtis", { required: true })}
+          {...register('idArtis', { required: true })}
           onChange={(e) => setName(e.target.value)}
         >
           <option selected>Seleccione una Artis</option>
-          {artis.length > 0 &&
-            artis.map((x) => (
+          {artis.length > 0
+            && artis.map((x) => (
               <option key={x._id} value={x.name}>
                 {x.name}
               </option>
             ))}
         </select>
         {errors.idArtis && (
-          <span className={"text-danger"}>{errors.idArtis.message}</span>
+          <span className={'text-danger'}>{errors.idArtis.message}</span>
         )}
       </div>
       <div className="mb-3">
@@ -140,11 +140,11 @@ const NewGallery = ({ artisSelect }) => {
           className={`form-control ${styles.placeholder}`}
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
-          {...register("galleryName", { required: true })}
+          {...register('galleryName', { required: true })}
           onChange={(e) => setGalleryName(e.target.value)}
         />
         {errors.galleryName && (
-          <span className={"text-danger"}>{errors.galleryName.message}</span>
+          <span className={'text-danger'}>{errors.galleryName.message}</span>
         )}
       </div>
       <div className="mb-3">
@@ -181,10 +181,10 @@ const NewGallery = ({ artisSelect }) => {
             className={`form-control ${styles.placeholder}`}
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            {...register("price", { required: true })}
+            {...register('price', { required: true })}
           />
           {errors.price && (
-            <span className={"$text-danger"}>{errors.price.message}</span>
+            <span className={'$text-danger'}>{errors.price.message}</span>
           )}
         </div>
         <div className="mb-3 col-md-5 col-sm-12">
@@ -199,10 +199,10 @@ const NewGallery = ({ artisSelect }) => {
             className={`form-control ${styles.placeholder}`}
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            {...register("price_USD", { required: true })}
+            {...register('price_USD', { required: true })}
           />
           {errors.price_USD && (
-            <span className={"$text-danger"}>{errors.price_USD.message}</span>
+            <span className={'$text-danger'}>{errors.price_USD.message}</span>
           )}
         </div>
       </div>
@@ -223,8 +223,8 @@ const NewGallery = ({ artisSelect }) => {
             gallery_name={nameOfTheGalllery}
           />
           <div className="d-flex flex-wrap ">
-            {three.length > 0 &&
-              three?.map((or) => {
+            {three.length > 0
+              && three?.map((or) => {
                 return (
                   <div className="position-relative" key={or}>
                     <img className={styles.image} src={or} alt={or} />
@@ -263,8 +263,8 @@ const NewGallery = ({ artisSelect }) => {
           />
 
           <div className="d-flex flex-wrap ">
-            {gallery.length > 0 &&
-              gallery?.map((or) => {
+            {gallery.length > 0
+              && gallery?.map((or) => {
                 return (
                   <>
                     <div className="position-relative">
@@ -285,16 +285,16 @@ const NewGallery = ({ artisSelect }) => {
         type="submit"
         disabled={
           !(
-            three.length > 0 &&
-            coverPhotoGallery &&
-            censoriship &&
-            gallery.length > 0
+            three.length > 0
+            && coverPhotoGallery
+            && censoriship
+            && gallery.length > 0
           )
         }
         className="btn btn-primary"
       >
-        {" "}
-        {loading ? "Creando galeria..." : "Crear galería"}{" "}
+        {' '}
+        {loading ? 'Creando galeria...' : 'Crear galería'}{' '}
       </button>
     </form>
   );

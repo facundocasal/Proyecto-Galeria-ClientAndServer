@@ -1,11 +1,11 @@
 /* eslint-disable no-underscore-dangle */
 
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState } from 'react';
 
-import Spinner from "react-bootstrap/Spinner";
-import Swal from "sweetalert2";
-import clientAxios from "../../config/clientAxios";
-import styles from "./userViewer.module.css";
+import Spinner from 'react-bootstrap/Spinner';
+import Swal from 'sweetalert2';
+import clientAxios from '../../config/clientAxios';
+import styles from './userViewer.module.css';
 
 const UserViewer = () => {
   const PageSize = 15;
@@ -19,20 +19,20 @@ const UserViewer = () => {
   const currentUser = usersAux.slice(startIndex, endIndex);
   const totalPages = Math.ceil(usersAux.length / PageSize);
   const getUsers = async () => {
-    clientAxios.get("/user").then((response) => {
+    clientAxios.get('/user').then((response) => {
       if (response.status !== 400) {
         setIsLoading(true);
         setUsers(response.data);
         setUsersAux(response.data);
       } else {
         Swal.fire({
-          icon: "error",
-          iconColor: "#D44F80",
-          title: "Ha ocurrido un error!",
-          color: "#FFF8D2",
-          background: "#0A1326",
-          confirmButtonText: "Cerrar",
-          confirmButtonColor: "#D44F80",
+          icon: 'error',
+          iconColor: '#D44F80',
+          title: 'Ha ocurrido un error!',
+          color: '#FFF8D2',
+          background: '#0A1326',
+          confirmButtonText: 'Cerrar',
+          confirmButtonColor: '#D44F80',
         });
       }
     });
@@ -55,36 +55,36 @@ const UserViewer = () => {
     Swal.fire({
       title: `Estas seguro que quieres eliminar el usuario ${userName}? Si su rol es artis se eliminara su usuario y sus galerias`,
       showDenyButton: true,
-      color: "#FFF8D2",
-      background: "#0A1326",
-      confirmButtonColor: "#D44F80",
-      confirmButtonText: "Eliminar",
-      denyButtonText: "Cancelar",
-      denyButtonColor: "#D44F80",
+      color: '#FFF8D2',
+      background: '#0A1326',
+      confirmButtonColor: '#D44F80',
+      confirmButtonText: 'Eliminar',
+      denyButtonText: 'Cancelar',
+      denyButtonColor: '#D44F80',
     }).then((result) => {
       if (result.isConfirmed) {
         setFlag(!flag);
-        clientAxios.delete("user", { data }).then((response) => {
+        clientAxios.delete('user', { data }).then((response) => {
           if (response.status !== 400) {
             setFlag(!flag);
             Swal.fire({
-              icon: "success",
-              iconColor: "#D44F80",
+              icon: 'success',
+              iconColor: '#D44F80',
               title: response.data.message,
-              color: "#FFF8D2",
-              background: "#0A1326",
-              confirmButtonText: "Cerrar",
-              confirmButtonColor: "#D44F80",
+              color: '#FFF8D2',
+              background: '#0A1326',
+              confirmButtonText: 'Cerrar',
+              confirmButtonColor: '#D44F80',
             });
           } else {
             Swal.fire({
-              icon: "error",
-              iconColor: "#D44F80",
+              icon: 'error',
+              iconColor: '#D44F80',
               title: response.data.message,
-              color: "#FFF8D2",
-              background: "#0A1326",
-              confirmButtonText: "Cerrar",
-              confirmButtonColor: "#D44F80",
+              color: '#FFF8D2',
+              background: '#0A1326',
+              confirmButtonText: 'Cerrar',
+              confirmButtonColor: '#D44F80',
             });
           }
         });
@@ -95,11 +95,11 @@ const UserViewer = () => {
     setCurrentPage(newPage);
   };
   const handleFilterCat = (cat) => {
-    if (cat === "all") {
+    if (cat === 'all') {
       setUsersAux(users);
     } else {
       const itemsMap = users.filter(
-        (user) => user.role.toLowerCase() === cat.toLowerCase() && user
+        (user) => user.role.toLowerCase() === cat.toLowerCase() && user,
       );
       setUsersAux(itemsMap);
     }
@@ -110,10 +110,9 @@ const UserViewer = () => {
       setUsersAux(users);
     } else {
       const itemsMap = users.filter(
-        (user) =>
-          (user.userName.toLowerCase() === e.toLowerCase() ||
-            user.email.toLowerCase() === e.toLowerCase()) &&
-          user
+        (user) => (user.userName.toLowerCase() === e.toLowerCase()
+            || user.email.toLowerCase() === e.toLowerCase())
+          && user,
       );
 
       setUsersAux(itemsMap);
@@ -149,7 +148,7 @@ const UserViewer = () => {
                   <li>
                     <a
                       className="dropdown-item"
-                      onClick={() => handleFilterCat("Admin")}
+                      onClick={() => handleFilterCat('Admin')}
                     >
                       Administrador
                     </a>
@@ -157,7 +156,7 @@ const UserViewer = () => {
                   <li>
                     <a
                       className="dropdown-item"
-                      onClick={() => handleFilterCat("artis")}
+                      onClick={() => handleFilterCat('artis')}
                     >
                       Artis
                     </a>
@@ -165,7 +164,7 @@ const UserViewer = () => {
                   <li>
                     <a
                       className="dropdown-item"
-                      onClick={() => handleFilterCat("client")}
+                      onClick={() => handleFilterCat('client')}
                     >
                       Cliente
                     </a>
@@ -173,7 +172,7 @@ const UserViewer = () => {
                   <li>
                     <a
                       className="dropdown-item"
-                      onClick={() => handleFilterCat("all")}
+                      onClick={() => handleFilterCat('all')}
                     >
                       Todos
                     </a>
@@ -185,7 +184,7 @@ const UserViewer = () => {
         </div>
         {!isLoading ? (
           <h1 className={`mt-2 ${styles.table}`}>
-            Cargando <Spinner animation="grow" size="sm" />{" "}
+            Cargando <Spinner animation="grow" size="sm" />{' '}
             <Spinner animation="grow" size="sm" />
           </h1>
         ) : (
@@ -210,8 +209,7 @@ const UserViewer = () => {
                     {
                       <button
                         type="button"
-                        onClick={() =>
-                          deleteUser(user._id, user.userName, user.role)
+                        onClick={() => deleteUser(user._id, user.userName, user.role)
                         }
                         className="btn btn-danger"
                       >
@@ -225,9 +223,9 @@ const UserViewer = () => {
           </table>
         )}
         {totalPages > 1 && (
-          <nav className={"mt-3"}>
-            <ul className={"pagination"}>
-              <li className={`page-item  ${currentPage === 1 && "disabled"} `}>
+          <nav className={'mt-3'}>
+            <ul className={'pagination'}>
+              <li className={`page-item  ${currentPage === 1 && 'disabled'} `}>
                 <button
                   className={` page-link ${styles.categories}`}
                   onClick={() => handlePageChange(currentPage - 1)}
@@ -237,7 +235,7 @@ const UserViewer = () => {
                 </button>
               </li>
               {[...Array(totalPages)].map((_, index) => (
-                <li key={index} className={"page-item "}>
+                <li key={index} className={'page-item '}>
                   <button
                     className={` page-link ${styles.categories}  ${
                       currentPage === index + 1 && styles.activePage
@@ -250,7 +248,7 @@ const UserViewer = () => {
               ))}
               <li
                 className={`page-item ${
-                  currentPage === totalPages && "disabled"
+                  currentPage === totalPages && 'disabled'
                 }`}
               >
                 <button

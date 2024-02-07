@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import AlertSecurity from "../../components/Alert/AlertSecurity";
-import Footer from "../../components/Footer/Footer";
-import GeneralModal from "../../components/GeneralModal/GeneralModal";
-import Head from "next/head";
-import Image from "next/image";
-import LoaderInit from "../../components/Loader/LoaderInit";
-import ModalImage from "../../components/ModalImage/ModalImage";
-import ModalPay from "../../components/ModalPay/ModalPay";
-import ModalSingIn from "../../components/ModalSingIn/ModalSingIn";
-import PropTypes from "prop-types";
-import Swal from "sweetalert2";
-import clientAxios from "../../config/clientAxios";
-import jwtDecode from "jwt-decode";
-import styles from "../../styles/Galleries.module.css";
-import { useRouter } from "next/router";
+import Head from 'next/head';
+import Image from 'next/image';
+import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
+import jwtDecode from 'jwt-decode';
+import { useRouter } from 'next/router';
+import AlertSecurity from '../../components/Alert/AlertSecurity';
+import Footer from '../../components/Footer/Footer';
+import GeneralModal from '../../components/GeneralModal/GeneralModal';
+import LoaderInit from '../../components/Loader/LoaderInit';
+import ModalImage from '../../components/ModalImage/ModalImage';
+import ModalPay from '../../components/ModalPay/ModalPay';
+import ModalSingIn from '../../components/ModalSingIn/ModalSingIn';
+import clientAxios from '../../config/clientAxios';
+import styles from '../../styles/Galleries.module.css';
 
 const Gallery = () => {
-  const [gallery, setGallery] = useState("");
+  const [gallery, setGallery] = useState('');
   const router = useRouter();
   const galleryName = router.query.id;
-  const token = localStorage.getItem("accessToken");
+  const token = localStorage.getItem('accessToken');
   const user = token ? jwtDecode(token) : false;
   const [idUser, setIdUser] = useState(user ? user.userId : 0);
-  const [img, setImg] = useState("");
+  const [img, setImg] = useState('');
   const [show, setShow] = useState(false);
   const [alert, setAlert] = useState(true);
   const handleClose = () => setShow(false);
@@ -41,7 +41,7 @@ const Gallery = () => {
       .then((res) => {
         setGallery(res.data);
       })
-      .catch((err) => Swal.fire("Intente nuevamente mas tarde"));
+      .catch((err) => Swal.fire('Intente nuevamente mas tarde'));
   }, [galleryName]);
 
   if (!gallery) return <LoaderInit />;
@@ -84,9 +84,9 @@ const Gallery = () => {
                   alt={src}
                   onClick={() => handleShow(src)}
                   style={{
-                    cursor: "pointer",
-                    width: " 90%",
-                    objectFit: "contain",
+                    cursor: 'pointer',
+                    width: ' 90%',
+                    objectFit: 'contain',
                   }}
                 />
                 <img
@@ -95,8 +95,8 @@ const Gallery = () => {
                   alt={src}
                   onClick={() => handleShow(src)}
                   style={{
-                    width: " 90%",
-                    objectFit: "contain",
+                    width: ' 90%',
+                    objectFit: 'contain',
                   }}
                 />
               </div>
@@ -114,16 +114,16 @@ const Gallery = () => {
                     onClick={() => handleShow(src)}
                     alt={src}
                     style={{
-                      cursor: "pointer",
-                      width: "90%",
-                      objectFit: "cover",
+                      cursor: 'pointer',
+                      width: '90%',
+                      objectFit: 'cover',
                     }}
                   />
                   <img
                     className=" d-block d-md-none"
                     src={src}
                     alt={src}
-                    style={{ width: "90%", objectFit: "cover" }}
+                    style={{ width: '90%', objectFit: 'cover' }}
                   />
                 </div>
               ))}
@@ -134,7 +134,7 @@ const Gallery = () => {
                 <img
                   src={gallery?.photoBlur}
                   alt={gallery?.photoBlur}
-                  style={{ width: "90%", objectFit: "cover" }}
+                  style={{ width: '90%', objectFit: 'cover' }}
                 />
                 <div
                   className={`position-absolute top-50 start-50 translate-middle text-center ${styles.textColor} `}
@@ -149,11 +149,11 @@ const Gallery = () => {
                       <p>
                         Si querés suscribirte o si ya tenes una suscripción a
                         esta galería, inicia sesión para poder suscribirte o
-                        visualizarla.{" "}
+                        visualizarla.{' '}
                       </p>
                       <p>
                         <em>
-                          Precio final de la galería AR${gallery?.price} - US${" "}
+                          Precio final de la galería AR${gallery?.price} - US${' '}
                           {gallery?.price_USD}
                         </em>
                       </p>
@@ -186,7 +186,7 @@ const Gallery = () => {
 
                       <p>
                         <em>
-                          Precio final de la galería AR${gallery?.price} - US${" "}
+                          Precio final de la galería AR${gallery?.price} - US${' '}
                           {gallery?.price_USD}
                         </em>
                       </p>

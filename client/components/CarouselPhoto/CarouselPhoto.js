@@ -1,23 +1,23 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import UploadMedia from "../UploadMedia/UploadMedia";
-import clientAxios from "../../config/clientAxios";
-import styles from "../../styles/Forms.module.css";
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
+import UploadMedia from '../UploadMedia/UploadMedia';
+import clientAxios from '../../config/clientAxios';
+import styles from '../../styles/Forms.module.css';
 
 const CarouselPhoto = () => {
   const [artis, setArtis] = useState([]);
-  const [coverImage, setCoverImage] = useState("");
+  const [coverImage, setCoverImage] = useState('');
 
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
-    await clientAxios.post("/artis", data);
+    await clientAxios.post('/artis', data);
   };
 
   const handleArtis = async () => {
-    const response = await clientAxios.get("/artis");
+    const response = await clientAxios.get('/artis');
     setArtis(response.data);
   };
 
@@ -32,15 +32,15 @@ const CarouselPhoto = () => {
   return (
     <form className="col-8" onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-3 pt-5">
-        <h2 style={{ color: "#D44F80" }}>CREAR CARRUSEL</h2>
+        <h2 style={{ color: '#D44F80' }}>CREAR CARRUSEL</h2>
         <label className={`form-label ${styles.title}`}>Nombre de Artis</label>
         <select
           className={`form-select ${styles.placeholder}`}
-          {...register("idArtis", { required: true })}
+          {...register('idArtis', { required: true })}
         >
           <option selected>Seleccione una Artis</option>
-          {artis.length > 0 &&
-            artis.map((x) => (
+          {artis.length > 0
+            && artis.map((x) => (
               <option key={x._id} value={x._id}>
                 {x.name}
               </option>

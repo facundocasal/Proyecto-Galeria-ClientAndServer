@@ -1,6 +1,6 @@
-import Head from "next/head";
-import Login from "../components/Login/Login";
-import styles from "../styles/Politics.module.css";
+import Head from 'next/head';
+import Login from '../components/Login/Login';
+import styles from '../styles/Politics.module.css';
 
 const LoginPage = () => {
   return (

@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import EditAccount from "../../components/EditAccount/EditAccount";
-import TableBuy from "../../components/TableBuy/TableBuy";
-import TableSus from "../../components/TableSus/TableSus";
-import clientAxios from "../../config/clientAxios";
-import jwtDecode from "jwt-decode";
-import styles from "../../styles/Home.module.css";
-import { useRouter } from "next/router";
-import { uuid } from "uuidv4";
+import jwtDecode from 'jwt-decode';
+import { useRouter } from 'next/router';
+import { uuid } from 'uuidv4';
+import EditAccount from '../../components/EditAccount/EditAccount';
+import TableBuy from '../../components/TableBuy/TableBuy';
+import TableSus from '../../components/TableSus/TableSus';
+import clientAxios from '../../config/clientAxios';
+import styles from '../../styles/Home.module.css';
 
 const User = () => {
   const [user, setUser] = useState(1);
   const router = useRouter();
   const [compras, setCompras] = useState([]);
-  const token = localStorage.getItem("accessToken");
+  const token = localStorage.getItem('accessToken');
   const userToken = token ? jwtDecode(token) : false;
-  const [idUser, setIdUser] = useState(userToken ? userToken.userId : "");
+  const [idUser, setIdUser] = useState(userToken ? userToken.userId : '');
   const [provincesLocked, setProvincesLocked] = useState([]);
   const [userInfo, setUserInfo] = useState(null);
 
@@ -29,8 +29,8 @@ const User = () => {
     setCompras(response.data);
   };
 
-  if (localStorage.getItem("accessToken") === null) {
-    router.push("/");
+  if (localStorage.getItem('accessToken') === null) {
+    router.push('/');
   }
   const addIdProvinces = (provincesLockedArtiss) => {
     const data = provincesLockedArtiss.map((province) => {
@@ -49,10 +49,8 @@ const User = () => {
   useEffect(() => {
     if (userInfo && userInfo?.userName) {
       clientAxios
-        .get("artis/getProvincesArtis", { userName: userInfo.userName })
-        .then((res) =>
-          setProvincesLocked(addIdProvinces(res.data?.provinces || []))
-        );
+        .get('artis/getProvincesArtis', { userName: userInfo.userName })
+        .then((res) => setProvincesLocked(addIdProvinces(res.data?.provinces || [])));
     }
   }, [userInfo]);
 
@@ -77,7 +75,7 @@ const User = () => {
                   <div className={`nav-link ${styles.column}`}>
                     <span onClick={() => setUser(1)}>Editar cuenta</span>
                   </div>
-                  {userInfo?.role === "client" ? (
+                  {userInfo?.role === 'client' ? (
                     <div className={`nav-link ${styles.column}`}>
                       <span onClick={() => setUser(2)}>Mis pedidos</span>
                     </div>
@@ -86,7 +84,7 @@ const User = () => {
                       <span onClick={() => setUser(2)}>Mis Ventas</span>
                     </div>
                   )}
-                  {userInfo?.role === "client" && (
+                  {userInfo?.role === 'client' && (
                     <div>
                       <div className={`nav-link ${styles.column}`}>
                         <span onClick={() => setUser(4)}>Suscripciones</span>
@@ -107,7 +105,7 @@ const User = () => {
           )}
           {user === 2 && (
             <TableBuy
-              role={userInfo?.role || ""}
+              role={userInfo?.role || ''}
               data={compras}
               key={userInfo.id}
             />

@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import "../styles/globals.css";
-import "bootstrap/dist/css/bootstrap.css";
+import '../styles/globals.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
-import { parseCookies, setCookie } from "nookies";
-import { useEffect, useState } from "react";
+import { parseCookies, setCookie } from 'nookies';
+import { useEffect, useState } from 'react';
 
-import BlockCaptures from "../components/Commons/blockCaptures";
-import Error from "../components/Error";
-import { GoogleAnalytics } from "../config/gtag";
-import Head from "next/head";
-import Loader from "../components/Loader/LoaderInit";
-import Msginitial from "../components/MsgInitial/Msginitial";
-import Navbar from "../components/Navbar/Navbar";
-import PropTypes from "prop-types";
-import Script from "next/script";
-import { ShuffleProvider } from "../context/shuffleContext";
-import { UserProvider } from "../context/userContext";
-import { fb } from "../config/fb";
-import { getGeolocalization } from "../ipState/ipState";
+import Head from 'next/head';
+import PropTypes from 'prop-types';
+import Script from 'next/script';
+import BlockCaptures from '../components/Commons/blockCaptures';
+import Error from '../components/Error';
+import { GoogleAnalytics } from '../config/gtag';
+import Loader from '../components/Loader/LoaderInit';
+import Msginitial from '../components/MsgInitial/Msginitial';
+import Navbar from '../components/Navbar/Navbar';
+import { ShuffleProvider } from '../context/shuffleContext';
+import { UserProvider } from '../context/userContext';
+import { fb } from '../config/fb';
+import { getGeolocalization } from '../ipState/ipState';
 
 const MyApp = ({ Component, pageProps }) => {
   const [location, setLocation] = useState(null);
@@ -35,9 +35,9 @@ const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     if (location !== null) {
       const encryptedProvince = location;
-      setCookie(null, "province", encryptedProvince, {
+      setCookie(null, 'province', encryptedProvince, {
         maxAge: 5 * 24 * 60 * 60, // 30 días en segundos
-        path: "/",
+        path: '/',
       });
     }
   }, [location]);
@@ -49,7 +49,7 @@ const MyApp = ({ Component, pageProps }) => {
   };
 
   const error = (er) => {
-    console.log("error");
+    console.log('error');
     setStatus(false);
     setErr(true);
   };
@@ -66,14 +66,14 @@ const MyApp = ({ Component, pageProps }) => {
 
   useEffect(() => {
     // Inicializa el pixel de Facebook
-    fb.init("1026241412111745");
+    fb.init('1026241412111745');
   }, []);
 
   if (err === true) {
     return (
       <Error
         texto={
-          "Lo sentimos por privacidad de las artiss para  acceder necesitas activar tu ubicacion"
+          'Lo sentimos por privacidad de las artiss para  acceder necesitas activar tu ubicacion'
         }
       />
     );

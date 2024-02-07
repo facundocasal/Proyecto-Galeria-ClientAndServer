@@ -1,32 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import Image from "next/image";
-import Link from "next/link";
-import ModalSingIn from "../ModalSingIn/ModalSingIn";
-import clientAxios from "../../config/clientAxios";
-import jwtDecode from "jwt-decode";
-import styles from "./navbar.module.css";
-import { useRouter } from "next/router";
-import { useUser } from "../../context/userContext";
+import Image from 'next/image';
+import Link from 'next/link';
+import jwtDecode from 'jwt-decode';
+import { useRouter } from 'next/router';
+import ModalSingIn from '../ModalSingIn/ModalSingIn';
+import clientAxios from '../../config/clientAxios';
+import styles from './navbar.module.css';
+import { useUser } from '../../context/userContext';
 
 const Navbar = () => {
   const router = useRouter();
   const { userData, flagReload, setFlagReload } = useUser();
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState('');
 
   const logout = () => {
     localStorage.clear();
     setFlagReload(!flagReload);
-    router.push("/");
+    router.push('/');
     window.location.reload();
   };
 
   useEffect(() => {
-    const tok = localStorage.getItem("accessToken");
+    const tok = localStorage.getItem('accessToken');
     if (tok !== null) {
       setRole(jwtDecode(tok).role);
-      clientAxios("jwt")
-        .then((res) => "")
+      clientAxios('jwt')
+        .then((res) => '')
         .catch((err) => {
           logout();
         });
@@ -81,7 +81,7 @@ const Navbar = () => {
                   </span>
                 </Link>
               </li>
-              {role === "admin" && (
+              {role === 'admin' && (
                 <li className={`nav-item ${styles.navItem}`}>
                   <Link href="/admin" passHref>
                     <span
@@ -98,7 +98,7 @@ const Navbar = () => {
                     <span
                       className={`nav-link ${styles.colorLink} px-0 px-lg-3`}
                     >
-                      Hola , {userData.userName}{" "}
+                      Hola , {userData.userName}{' '}
                       <i className="bi bi-person-fill"></i>
                     </span>
                   </Link>

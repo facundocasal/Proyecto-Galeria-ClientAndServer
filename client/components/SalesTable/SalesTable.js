@@ -1,8 +1,8 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState } from 'react';
 
-import Spinner from "react-bootstrap/Spinner";
-import clientAxios from "../../config/clientAxios";
-import styles from "./salesTable.module.css";
+import Spinner from 'react-bootstrap/Spinner';
+import clientAxios from '../../config/clientAxios';
+import styles from './salesTable.module.css';
 
 const SalesTable = () => {
   const PageSize = 15;
@@ -16,7 +16,7 @@ const SalesTable = () => {
   const currentSales = salesFilter.slice(startIndex, endIndex);
   const totalPages = Math.ceil(salesFilter.length / PageSize);
   const getSales = async () => {
-    clientAxios.get("/purchase").then((response) => {
+    clientAxios.get('/purchase').then((response) => {
       if (response.status !== 400) {
         setIsLoading(true);
         response.data.reverse();
@@ -30,7 +30,7 @@ const SalesTable = () => {
   };
   useEffect(async () => {
     await getSales();
-    console.log("sales", sales);
+    console.log('sales', sales);
   }, []);
 
   return (
@@ -39,7 +39,7 @@ const SalesTable = () => {
       <div className="row">
         {!isLoading ? (
           <h1 className={`mt-2 ${styles.table}`}>
-            Cargando <Spinner animation="grow" size="sm" />{" "}
+            Cargando <Spinner animation="grow" size="sm" />{' '}
             <Spinner animation="grow" size="sm" />
           </h1>
         ) : (
@@ -60,20 +60,20 @@ const SalesTable = () => {
               {currentSales.map((sale, i) => (
                 <tr key={i} className={`${styles.tableBody}`}>
                   <td>
-                    {new Date(sale.createdAt).toLocaleDateString("es-AR")}
+                    {new Date(sale.createdAt).toLocaleDateString('es-AR')}
                   </td>
                   <td>
-                    {sale.userName} / {sale.emailUser ? sale.emailUser : ""}{" "}
+                    {sale.userName} / {sale.emailUser ? sale.emailUser : ''}{' '}
                   </td>
-                  <td>{sale.available ? "🟢" : "🔴"}</td>
+                  <td>{sale.available ? '🟢' : '🔴'}</td>
                   <td>{sale.artis}</td>
                   <td>{sale.galleryName}</td>
                   <td>{sale.method}</td>
                   <td>
-                    {sale.method === "mercado Pago" ? "$" : "USD"} {sale.price}
+                    {sale.method === 'mercado Pago' ? '$' : 'USD'} {sale.price}
                   </td>
                   <td>
-                    {sale.method === "mercado Pago" ? "$" : "USD"}{" "}
+                    {sale.method === 'mercado Pago' ? '$' : 'USD'}{' '}
                     {sale.commission}
                   </td>
                 </tr>
@@ -84,7 +84,7 @@ const SalesTable = () => {
         {totalPages > 1 && (
           <nav className="mt-3">
             <ul className="pagination">
-              <li className={`page-item ${currentPage === 1 && "disabled"}`}>
+              <li className={`page-item ${currentPage === 1 && 'disabled'}`}>
                 <button
                   className={` page-link ${styles.categories}`}
                   onClick={() => handlePageChange(currentPage - 1)}
@@ -94,7 +94,7 @@ const SalesTable = () => {
                 </button>
               </li>
               {[...Array(totalPages)].map((_, index) => (
-                <li key={index} className={"page-item"}>
+                <li key={index} className={'page-item'}>
                   <button
                     className={` page-link ${styles.categories}  ${
                       currentPage === index + 1 && styles.activePage
@@ -107,7 +107,7 @@ const SalesTable = () => {
               ))}
               <li
                 className={`page-item ${
-                  currentPage === totalPages && "disabled"
+                  currentPage === totalPages && 'disabled'
                 }`}
               >
                 <button

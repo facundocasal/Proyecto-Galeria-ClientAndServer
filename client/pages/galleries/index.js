@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import CardGallery from "../../components/CardGallery/CardGallery";
-import Error from "../../components/Error";
-import Footer from "../../components/Footer/Footer";
-import Head from "next/head";
-import LoaderInit from "../../components/Loader/LoaderInit";
-import ModalSingIn from "../../components/ModalSingIn/ModalSingIn";
-import clientAxios from "../../config/clientAxios";
-import jwtDecode from "jwt-decode";
-import { parseCookies } from "nookies";
-import styles from "../../styles/Galleries.module.css";
-import { useShuffle } from "../../context/shuffleContext";
+import Head from 'next/head';
+import jwtDecode from 'jwt-decode';
+import { parseCookies } from 'nookies';
+import CardGallery from '../../components/CardGallery/CardGallery';
+import Error from '../../components/Error';
+import Footer from '../../components/Footer/Footer';
+import LoaderInit from '../../components/Loader/LoaderInit';
+import ModalSingIn from '../../components/ModalSingIn/ModalSingIn';
+import clientAxios from '../../config/clientAxios';
+import styles from '../../styles/Galleries.module.css';
+import { useShuffle } from '../../context/shuffleContext';
 
 const Galleries = () => {
   const [galerias, setGalerias] = useState(null);
   const [error, setError] = useState(false);
   const [erroNotGalleries, setErrorNotGalleries] = useState(null);
-  const token = localStorage.getItem("accessToken") || undefined;
-  const role = token === undefined ? "client" : jwtDecode(token).role;
+  const token = localStorage.getItem('accessToken') || undefined;
+  const role = token === undefined ? 'client' : jwtDecode(token).role;
   const { shuffleArray } = useShuffle();
   const { province } = parseCookies();
 
   useEffect(() => {
-    if (role === "admin") {
-      clientAxios("galleries/admin")
+    if (role === 'admin') {
+      clientAxios('galleries/admin')
         .then((res) => {
           setGalerias(res.data);
         })
@@ -47,7 +47,7 @@ const Galleries = () => {
   if (error) {
     return (
       <Error
-        texto={"Ha ocurrido un error intentalo nuevamente en unos minutos"}
+        texto={'Ha ocurrido un error intentalo nuevamente en unos minutos'}
       />
     );
   }

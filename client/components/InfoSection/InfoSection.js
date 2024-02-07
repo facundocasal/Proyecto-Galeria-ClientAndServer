@@ -1,9 +1,9 @@
+import Link from 'next/link';
+import PropTypes from 'prop-types';
 import CustomerSupport from '../CustomerSupport/CustomerSupport';
 import GeneralModal from '../GeneralModal/GeneralModal';
-import Link from 'next/link';
 import ModalSingIn from '../ModalSingIn/ModalSingIn';
 import Payment from '../Payment/Payment';
-import PropTypes from 'prop-types';
 import styles from './infosection.module.css';
 import { useUser } from '../../context/userContext';
 

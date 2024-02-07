@@ -1,9 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import classesText from '../../styles/Galleries.module.css';
-import styles from './Msginitial.module.css';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import classesText from '../../styles/Galleries.module.css';
+import styles from './Msginitial.module.css';
 import { useUser } from '../../context/userContext';
 
 function Msginitial() {

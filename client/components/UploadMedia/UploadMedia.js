@@ -1,10 +1,10 @@
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { useEffect, useRef, useState } from "react";
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import { useEffect, useRef, useState } from 'react';
 
-import PropTypes from "prop-types";
-import Swal from "sweetalert2";
-import firebase from "../../config/firebase";
-import styles from "../../styles/Forms.module.css";
+import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
+import firebase from '../../config/firebase';
+import styles from '../../styles/Forms.module.css';
 
 const UploadMedia = ({
   onSave,
@@ -20,7 +20,7 @@ const UploadMedia = ({
 
   const [button, setButton] = useState(false);
 
-  const media_type = isImage ? "images" : "video";
+  const media_type = isImage ? 'images' : 'video';
 
   const DatePrefix = () => new Date();
 
@@ -29,11 +29,11 @@ const UploadMedia = ({
   const handleClick = () => {
     if (isGallery) {
       Swal.fire({
-        title: "Antes de subir!",
+        title: 'Antes de subir!',
         text: `¿Estás seguro de que quieres subir esta imagen a "artiss/${artis}/${media_type}/${gallery_name}"?, ten en cuenta que el nombre de la galeria creara una carpeta.`,
-        icon: "question",
-        confirmButtonText: "Continuar",
-        cancelButtonText: "Cancelar",
+        icon: 'question',
+        confirmButtonText: 'Continuar',
+        cancelButtonText: 'Cancelar',
         showCancelButton: true,
       }).then((upload) => {
         if (upload.isConfirmed && files_ref.current) {
@@ -42,11 +42,11 @@ const UploadMedia = ({
       });
     } else {
       Swal.fire({
-        title: "Antes de subir!",
+        title: 'Antes de subir!',
         text: `¿Estás seguro de que quieres subir esta imagen a "artiss/${artis}"?, ten en cuenta que el nombre creara una carpeta.`,
-        icon: "question",
-        confirmButtonText: "Seleccionar imagen",
-        cancelButtonText: "Cancelar",
+        icon: 'question',
+        confirmButtonText: 'Seleccionar imagen',
+        cancelButtonText: 'Cancelar',
         showCancelButton: true,
       }).then((upload) => {
         if (upload.isConfirmed && files_ref.current) {
@@ -69,20 +69,20 @@ const UploadMedia = ({
       if (isGallery) {
         stref = ref(
           firebase,
-          `/artiss/${artis}/${media_type}/${gallery_name}/${folder_type}/${date}_${imageFile.name}`
+          `/artiss/${artis}/${media_type}/${gallery_name}/${folder_type}/${date}_${imageFile.name}`,
         );
       } else {
         stref = ref(
           firebase,
-          `/artiss/${artis}/${media_type}/${folder_type}/${date}_${imageFile.name}`
+          `/artiss/${artis}/${media_type}/${folder_type}/${date}_${imageFile.name}`,
         );
       }
       const task = uploadBytesResumable(stref, imageFile);
       task.on(
-        "state_changed",
+        'state_changed',
         (snapshot) => {
           const percent = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
           );
 
           if (percent === 100) {
@@ -93,7 +93,7 @@ const UploadMedia = ({
         async () => {
           const downloadURL = await getDownloadURL(task.snapshot.ref);
           resolve(downloadURL);
-        }
+        },
       );
     });
   };
@@ -126,7 +126,7 @@ const UploadMedia = ({
 
       {files_ref && (
         <button
-          style={{ width: "100%" }}
+          style={{ width: '100%' }}
           type="button"
           onClick={handleClick}
           className={`btn ${styles.button}`}

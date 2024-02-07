@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import AutocompleteChips from "../AutocompleteChips/AutocompleteChips";
-import Spinner from "react-bootstrap/Spinner";
-import Swal from "sweetalert2";
-import clientAxios from "../../config/clientAxios";
-import { provinces } from "../NewArtis/provinces";
-import styles from "./editAccount.module.css";
-import { useForm } from "react-hook-form";
+import Spinner from 'react-bootstrap/Spinner';
+import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
+import AutocompleteChips from '../AutocompleteChips/AutocompleteChips';
+import clientAxios from '../../config/clientAxios';
+import { provinces } from '../NewArtis/provinces';
+import styles from './editAccount.module.css';
 
 const EditAccount = ({ userInfo, provincesLocked }) => {
-  const { name, lastName, userName, email, role } = userInfo;
+  const {
+    name, lastName, userName, email, role,
+  } = userInfo;
   const [isLoading, setIsLoading] = useState(false);
   const [isValid, setIsValid] = useState(true);
-  const [menssage, setMenssage] = useState("");
+  const [menssage, setMenssage] = useState('');
   const [provincesLockedSelected, setProvincesLockedSelected] = useState([]);
   const {
     register,
@@ -34,8 +36,8 @@ const EditAccount = ({ userInfo, provincesLocked }) => {
     }
     setIsLoading(true);
     const provincesSelect = deleteIdProvinces(provincesLockedSelected);
-    const resp = await clientAxios.post("user/changepassword", data);
-    const response = await clientAxios.post("artis/editProvinces", {
+    const resp = await clientAxios.post('user/changepassword', data);
+    const response = await clientAxios.post('artis/editProvinces', {
       provinces: provincesSelect,
     });
     if (resp.data.status === 500) {
@@ -43,15 +45,15 @@ const EditAccount = ({ userInfo, provincesLocked }) => {
       setIsLoading(false);
     }
     if (resp.data.status === 200) {
-      Swal.fire("Se actualizaron tus datos correctamente");
+      Swal.fire('Se actualizaron tus datos correctamente');
       setIsLoading(false);
       setTimeout(() => {
         window.location.reload();
       }, 2500);
     }
-    if (response.data.message === "Provincias modificadas") {
+    if (response.data.message === 'Provincias modificadas') {
       setMenssage(resp.data.message);
-      Swal.fire("Se actualizaron tus provincias correctamente");
+      Swal.fire('Se actualizaron tus provincias correctamente');
       setIsLoading(false);
       setTimeout(() => {
         window.location.reload();
@@ -77,7 +79,7 @@ const EditAccount = ({ userInfo, provincesLocked }) => {
               className={`form-control form-control-sm ${styles.formPlaceholder} ${styles.text} `}
               id="nameUser"
               defaultValue={name}
-              {...register("name", { required: true })}
+              {...register('name', { required: true })}
             />
             {errors.name && (
               <p className={`mb-3 ${styles.text}`}>* Este campo es requerido</p>
@@ -90,7 +92,7 @@ const EditAccount = ({ userInfo, provincesLocked }) => {
               className={`form-control form-control-sm ${styles.formPlaceholder} ${styles.text}`}
               id="lastNameUser"
               defaultValue={lastName}
-              {...register("lastName", { required: true })}
+              {...register('lastName', { required: true })}
             />
             {errors.lastName && (
               <p className={`mb-3 ${styles.text}`}>* Este campo es requerido</p>
@@ -107,17 +109,17 @@ const EditAccount = ({ userInfo, provincesLocked }) => {
             id="nameVisibleUser"
             defaultValue={userName}
             aria-describedby="nameVisibleUser"
-            {...register("userName", {
-              required: "* Este campo es requerido",
+            {...register('userName', {
+              required: '* Este campo es requerido',
               minLength: {
                 value: 4,
                 message:
-                  "* El nombre de usuario de contener entre 4 y 10 caracteres",
+                  '* El nombre de usuario de contener entre 4 y 10 caracteres',
               },
               maxLength: {
                 value: 25,
                 message:
-                  "* El nombre de usuario de contener entre 4 y 10 caracteres",
+                  '* El nombre de usuario de contener entre 4 y 10 caracteres',
               },
             })}
           />
@@ -141,13 +143,13 @@ const EditAccount = ({ userInfo, provincesLocked }) => {
             className={`form-control form-control-sm ${styles.formPlaceholder} ${styles.text}`}
             id="mailUser"
             defaultValue={email}
-            {...register("email", { required: true })}
+            {...register('email', { required: true })}
           />
           {errors.email && (
             <p className={`mb-3 ${styles.text}`}>* Este campo es requerido</p>
           )}
         </div>
-        {role === "artis" && (
+        {role === 'artis' && (
           <div className="col-12 mb-4">
             <AutocompleteChips
               options={provinces}
@@ -168,15 +170,15 @@ const EditAccount = ({ userInfo, provincesLocked }) => {
                 className={`form-control form-control-sm ${styles.formPlaceholder}`}
                 id="passNew"
                 aria-describedby="passNewHelp"
-                {...register("password", {
+                {...register('password', {
                   minLength: {
                     value: 8,
                     message:
-                      "* La contraseña debe contener al menos 8 caracteres",
+                      '* La contraseña debe contener al menos 8 caracteres',
                   },
                   pattern: {
                     value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
-                    message: "Debe contener una mayuscula y un numero",
+                    message: 'Debe contener una mayuscula y un numero',
                   },
                 })}
               />
@@ -202,7 +204,7 @@ const EditAccount = ({ userInfo, provincesLocked }) => {
                 id="passRepeat"
                 aria-label="confirmPassword"
                 aria-describedby="passRepeatHelp"
-                {...register("confirmPassword")}
+                {...register('confirmPassword')}
               />
               <div
                 id="passRepeatHelp"
@@ -227,18 +229,18 @@ const EditAccount = ({ userInfo, provincesLocked }) => {
             className={`form-control form-control-sm ${styles.formPlaceholder}`}
             id="passOld"
             aria-describedby="passOldHelp"
-            {...register("passOld", { required: true })}
+            {...register('passOld', { required: true })}
           />
           {errors.passOld && (
             <p className={`mb-3 ${styles.text}`}>
-              * Este campo es requerido para realizar cambios{" "}
+              * Este campo es requerido para realizar cambios{' '}
             </p>
           )}
         </div>
         <p className={`mb-3 ${styles.text}`}>{menssage}</p>
         <div className="w-100 me-5 text-end">
           <button type="submit" className={`btn ${styles.button}`}>
-            Guardar cambios{" "}
+            Guardar cambios{' '}
             {isLoading && <Spinner animation="grow" size="sm" />}
           </button>
         </div>

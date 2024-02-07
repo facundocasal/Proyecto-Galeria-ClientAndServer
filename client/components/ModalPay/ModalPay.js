@@ -1,27 +1,29 @@
-import { Wallet, initMercadoPago } from "@mercadopago/sdk-react";
+import { Wallet, initMercadoPago } from '@mercadopago/sdk-react';
 
-import BtnPaypal from "../Paypal/btnPaypal";
-import Spinner from "react-bootstrap/Spinner";
-import clientAxios from "../../config/clientAxios";
-import styles from "./modalPay.module.css";
-import { useState } from "react";
+import Spinner from 'react-bootstrap/Spinner';
+import { useState } from 'react';
+import BtnPaypal from '../Paypal/btnPaypal';
+import clientAxios from '../../config/clientAxios';
+import styles from './modalPay.module.css';
 
-const ModalPay = ({ item, artis, price, galleryName, price_USD, type }) => {
+const ModalPay = ({
+  item, artis, price, galleryName, price_USD, type,
+}) => {
   initMercadoPago(process.env.NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY);
   const [isLoading, setIsLoading] = useState(false);
-  const [linkMP, setlinkMP] = useState("");
-  const [preferenceId, setPreferenceId] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [linkMP, setlinkMP] = useState('');
+  const [preferenceId, setPreferenceId] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [buttonPayPal, setButtonPayPal] = useState(false);
 
   const handleClickMercadoPago = async () => {
-    const pedido = type === "sub" ? { artis } : { galleryName };
-    setErrorMessage("");
+    const pedido = type === 'sub' ? { artis } : { galleryName };
+    setErrorMessage('');
     try {
       setIsLoading(true);
       const response = await clientAxios.post(
-        "/mercadopago/createPayment",
-        pedido
+        '/mercadopago/createPayment',
+        pedido,
       );
       setButtonPayPal(false);
 
@@ -30,10 +32,10 @@ const ModalPay = ({ item, artis, price, galleryName, price_USD, type }) => {
       setPreferenceId(response.data.preferenseId);
       setIsLoading(false);
     } catch (error) {
-      if (error.response.data.message === "items needed") {
+      if (error.response.data.message === 'items needed') {
         setButtonPayPal(false);
         setErrorMessage(
-          `Ya cuentas con una suscripción activa en todas las galerías de ${artis}`
+          `Ya cuentas con una suscripción activa en todas las galerías de ${artis}`,
         );
       }
     }
@@ -42,8 +44,8 @@ const ModalPay = ({ item, artis, price, galleryName, price_USD, type }) => {
   const handlePayPal = () => {
     // setlinkMP('');
     setIsLoading(true);
-    setPreferenceId("");
-    setErrorMessage("");
+    setPreferenceId('');
+    setErrorMessage('');
     setButtonPayPal(true);
     setIsLoading(false);
   };
@@ -61,7 +63,7 @@ const ModalPay = ({ item, artis, price, galleryName, price_USD, type }) => {
         <p className={`m-0 text-center ${styles.title}`}>
           <span>Precio:</span> $ {price} - US$ {price_USD}
         </p>
-        {type === "sub" && (
+        {type === 'sub' && (
           <p className={`m-0 text-center ${styles.title}`}>
             <span>Aviso:</span> Las galerías ya adquiridas se descontaran del
             total a pagar.
@@ -94,11 +96,11 @@ const ModalPay = ({ item, artis, price, galleryName, price_USD, type }) => {
         {preferenceId && (
           <Wallet
             initialization={{ preferenceId }}
-            customization={{ texts: { valueProp: "smart_option" } }}
+            customization={{ texts: { valueProp: 'smart_option' } }}
           />
         )}
         {buttonPayPal && (
-          <div style={{ width: "fit-content", margin: "0 auto" }}>
+          <div style={{ width: 'fit-content', margin: '0 auto' }}>
             <BtnPaypal
               type={type}
               galleryName={galleryName}

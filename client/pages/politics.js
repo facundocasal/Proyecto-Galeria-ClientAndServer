@@ -1,7 +1,7 @@
-import Footer from "../components/Footer/Footer";
-import Head from "next/head";
-import ModalSingIn from "../components/ModalSingIn/ModalSingIn";
-import styles from "../styles/Politics.module.css";
+import Head from 'next/head';
+import Footer from '../components/Footer/Footer';
+import ModalSingIn from '../components/ModalSingIn/ModalSingIn';
+import styles from '../styles/Politics.module.css';
 
 const Politics = () => {
   return (
@@ -25,12 +25,7 @@ const Politics = () => {
           <p className={`m-4 px-3 ${styles.politics}`}>{data.pre}</p>
           <p className={`m-4 px-3 ${styles.politics}`}>{data.presentation}</p>
           {/* data politics  */}
-          
-          {/* {data.parrafos.map((par, index) => (
-            <p key={index} className={`m-4 px-3 ${styles.politics}`}>
-              {par}
-            </p>
-          ))} */}
+
         </section>
       </main>
 

@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 const UserPedidos = ({ purchase }) => {
   return (
     <>
       <h2 className="text-white">Historial de Pedidos</h2>
-      <table className={"table  text-white"}>
+      <table className={'table  text-white'}>
         <thead>
           <tr>
             <th scope="col">Artis</th>

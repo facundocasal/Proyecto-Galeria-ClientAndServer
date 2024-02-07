@@ -1,5 +1,5 @@
-import GeneralModal from './GeneralModal';
 import React from 'react';
+import GeneralModal from './GeneralModal';
 
 const Component = {
   title: 'General Modal',

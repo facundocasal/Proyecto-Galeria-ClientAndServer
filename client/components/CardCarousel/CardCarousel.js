@@ -1,13 +1,13 @@
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import CardGallery from "../CardGallery/CardGallery";
-import CardHome from "../CardHome/CardHome";
-import { Navigation } from "swiper";
-import PropTypes from "prop-types";
+import { Navigation } from 'swiper';
+import PropTypes from 'prop-types';
+import CardGallery from '../CardGallery/CardGallery';
+import CardHome from '../CardHome/CardHome';
 
 /* eslint-disable import/no-unresolved */
 
@@ -30,7 +30,7 @@ const CardCarousel = ({ carouselInfo, gallery, artis }) => {
       navigation={true}
       modules={[Navigation]}
       className="mySwiper"
-      style={{ marginBottom: "40px" }}
+      style={{ marginBottom: '40px' }}
     >
       {carouselInfo.map((info, index) => (
         <SwiperSlide key={index}>

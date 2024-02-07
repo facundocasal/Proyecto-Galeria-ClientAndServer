@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import Error from "../../components/Error";
-import Footer from "../../components/Footer/Footer";
-import Head from "next/head";
-import ModalEditArtis from "../../components/ModalEditArtis/ModalEditArtis";
-import ModalSingIn from "../../components/ModalSingIn/ModalSingIn";
-import clientAxios from "../../config/clientAxios";
-import jwtDecode from "jwt-decode";
-import styles from "../../styles/Galleries.module.css";
-import { useRouter } from "next/router";
+import Head from 'next/head';
+import jwtDecode from 'jwt-decode';
+import { useRouter } from 'next/router';
+import Error from '../../components/Error';
+import Footer from '../../components/Footer/Footer';
+import ModalEditArtis from '../../components/ModalEditArtis/ModalEditArtis';
+import ModalSingIn from '../../components/ModalSingIn/ModalSingIn';
+import clientAxios from '../../config/clientAxios';
+import styles from '../../styles/Galleries.module.css';
 
 const EditArtis = () => {
   const { query } = useRouter();
   const { idArtis } = query;
   const [artis, setArtis] = useState();
-  const jwt = localStorage.getItem("accessToken");
+  const jwt = localStorage.getItem('accessToken');
   const role = jwt ? jwtDecode(jwt).role : undefined;
   const router = useRouter();
   useEffect(() => {
-    clientAxios("artis/admin").then((res) => {
+    clientAxios('artis/admin').then((res) => {
       setArtis(res?.data?.find((q) => q.name === idArtis));
     });
   }, [idArtis]);
 
   return (
     <>
-      {role === "admin" ? (
+      {role === 'admin' ? (
         <div className={styles.bgHome}>
           <Head>
             <title>Proyecto Galeria</title>
@@ -47,8 +47,8 @@ const EditArtis = () => {
         </div>
       ) : (
         <>
-          <Error texto={"This page could not be found."} number={"404"}></Error>
-          {setTimeout(() => router.push("/"), 5000)}
+          <Error texto={'This page could not be found.'} number={'404'}></Error>
+          {setTimeout(() => router.push('/'), 5000)}
         </>
       )}
     </>

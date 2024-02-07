@@ -1,8 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import classes from "../../styles/Forms.module.css";
-import styles from "./footer.module.css";
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import classes from '../../styles/Forms.module.css';
+import styles from './footer.module.css';
 
 const Footer = () => {
   return (
@@ -57,7 +57,7 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          
+
         </div>
         <div className="row">
           <div className="col-lg-6 col-md-12 py-3">
@@ -74,8 +74,8 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                {" "}
-                Fabricio Alberto{" "}
+                {' '}
+                Fabricio Alberto{' '}
               </a>
               y
               <a
@@ -84,7 +84,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                {" "}
+                {' '}
                 Facundo Casal
               </a>
             </p>

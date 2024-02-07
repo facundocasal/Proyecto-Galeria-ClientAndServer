@@ -1,11 +1,11 @@
-import Link from "next/link";
-import PropTypes from "prop-types";
-import jwtDecode from "jwt-decode";
-import styles from "./cardhome.module.css";
-import { useRouter } from "next/router";
+import Link from 'next/link';
+import PropTypes from 'prop-types';
+import jwtDecode from 'jwt-decode';
+import { useRouter } from 'next/router';
+import styles from './cardhome.module.css';
 
 const CardHome = ({ coverImage, name, seccion }) => {
-  const jwt = localStorage.getItem("accessToken");
+  const jwt = localStorage.getItem('accessToken');
   const role = jwt ? jwtDecode(jwt).role : undefined;
   const router = useRouter();
   const handleEditArtis = () => {
@@ -13,10 +13,10 @@ const CardHome = ({ coverImage, name, seccion }) => {
   };
   return (
     <div className="position-relative">
-      {role === "admin" && seccion !== "home" && (
+      {role === 'admin' && seccion !== 'home' && (
         <div
           className="position-absolute"
-          style={{ left: "15px", top: "15px", zIndex: "1" }}
+          style={{ left: '15px', top: '15px', zIndex: '1' }}
         >
           <button
             onClick={handleEditArtis}

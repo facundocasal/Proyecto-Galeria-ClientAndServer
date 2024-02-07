@@ -1,9 +1,9 @@
-import "bootstrap/dist/css/bootstrap.css";
+import 'bootstrap/dist/css/bootstrap.css';
 
-import Table from "react-bootstrap/Table";
-import styles from "./TableSus.module.css";
-import stylesHome from "../../styles/Home.module.css";
-import { useRouter } from "next/router";
+import Table from 'react-bootstrap/Table';
+import { useRouter } from 'next/router';
+import styles from './TableSus.module.css';
+import stylesHome from '../../styles/Home.module.css';
 
 const TableSus = ({ data }) => {
   const router = useRouter();
@@ -15,7 +15,7 @@ const TableSus = ({ data }) => {
     const today = new Date().getTime();
     const dif = parseInt(
       31 - (today - dateBuy.getTime()) / (1000 * 60 * 60 * 24),
-      10
+      10,
     );
     return dif;
   };
@@ -37,8 +37,7 @@ const TableSus = ({ data }) => {
           </thead>
           <tbody>
             {data.map(
-              (i) =>
-                i.available && (
+              (i) => i.available && (
                   <tr>
                     <td>{data.indexOf(i) + 1}</td>
                     <td>{i.artis}</td>
@@ -53,7 +52,7 @@ const TableSus = ({ data }) => {
                       </button>
                     </td>
                   </tr>
-                )
+              ),
             )}
           </tbody>
         </Table>

@@ -1,31 +1,31 @@
-import * as Yup from "yup";
+import * as Yup from 'yup';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import AutocompleteChips from "../AutocompleteChips/AutocompleteChips";
-import PropTypes from "prop-types";
-import Swal from "sweetalert2";
-import UploadMedia from "../UploadMedia/UploadMedia";
-import clientAxios from "../../config/clientAxios";
-import { provinces } from "./provinces";
-import styles from "../../styles/Forms.module.css";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import AutocompleteChips from '../AutocompleteChips/AutocompleteChips';
+import UploadMedia from '../UploadMedia/UploadMedia';
+import clientAxios from '../../config/clientAxios';
+import { provinces } from './provinces';
+import styles from '../../styles/Forms.module.css';
 
-const style = "mb-3 col-md-6 col-sm-12 p-1";
+const style = 'mb-3 col-md-6 col-sm-12 p-1';
 
 const NewArtis = ({ setArtis }) => {
   const schema = Yup.object({
-    name: Yup.string().required("Nombre es requerido"),
-    lastName: Yup.string().required("Apellido es requerido"),
+    name: Yup.string().required('Nombre es requerido'),
+    lastName: Yup.string().required('Apellido es requerido'),
     email: Yup.string()
-      .email("Formato Invalido")
-      .required("Email es requerido"),
+      .email('Formato Invalido')
+      .required('Email es requerido'),
     password: Yup.string()
-      .min(3, "La contraseña debe tener 3 caracteres como minimo")
-      .matches(/[A-Z]/, "Password requires an uppercase letter")
-      .max(25, "La contraseña puede tener 25 caracteres como maximo")
-      .required("Contraseña es requerida"),
+      .min(3, 'La contraseña debe tener 3 caracteres como minimo')
+      .matches(/[A-Z]/, 'Password requires an uppercase letter')
+      .max(25, 'La contraseña puede tener 25 caracteres como maximo')
+      .required('Contraseña es requerida'),
   }).required();
 
   const {
@@ -38,7 +38,7 @@ const NewArtis = ({ setArtis }) => {
   });
 
   const [image, setImage] = useState();
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [imageBanner, setImageBanner] = useState();
   const [provincesSelected, setProvincesSelected] = useState([]);
   const resetIamge = () => {
@@ -54,32 +54,32 @@ const NewArtis = ({ setArtis }) => {
     };
 
     clientAxios
-      .post("/artis", finalData)
+      .post('/artis', finalData)
       .then((response) => {
         if (response.status === 200) {
           setArtis(true);
           reset();
           resetIamge();
           Swal.fire({
-            icon: "success",
-            iconColor: "#D44F80",
-            title: "Artis creada con éxito",
-            color: "#FFF8D2",
-            background: "#0A1326",
-            confirmButtonText: "Cerrar",
-            confirmButtonColor: "#D44F80",
+            icon: 'success',
+            iconColor: '#D44F80',
+            title: 'Artis creada con éxito',
+            color: '#FFF8D2',
+            background: '#0A1326',
+            confirmButtonText: 'Cerrar',
+            confirmButtonColor: '#D44F80',
           });
         }
       })
       .catch((err) => {
         Swal.fire({
-          icon: "error",
-          iconColor: "#D44F80",
-          title: "No se puede crear la Artis, Artis existente u otro motivo",
-          color: "#FFF8D2",
-          background: "#0A1326",
-          confirmButtonText: "Cerrar",
-          confirmButtonColor: "#D44F80",
+          icon: 'error',
+          iconColor: '#D44F80',
+          title: 'No se puede crear la Artis, Artis existente u otro motivo',
+          color: '#FFF8D2',
+          background: '#0A1326',
+          confirmButtonText: 'Cerrar',
+          confirmButtonColor: '#D44F80',
         });
       });
   };
@@ -99,7 +99,7 @@ const NewArtis = ({ setArtis }) => {
 
   return (
     <form className="pt-5" onSubmit={handleSubmit(onSubmit)}>
-      <h2 style={{ color: "#D44F80" }}>CREAR ARTIS</h2>
+      <h2 style={{ color: '#D44F80' }}>CREAR ARTIS</h2>
 
       <div className="d-md-flex flex-wrap justify-content-between">
         <div className={style}>
@@ -114,7 +114,7 @@ const NewArtis = ({ setArtis }) => {
             className={`form-control ${styles.placeholder}`}
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            {...register("name", { required: true })}
+            {...register('name', { required: true })}
             onChange={setArtisName}
           />
           {errors.name && (
@@ -133,7 +133,7 @@ const NewArtis = ({ setArtis }) => {
             className={`form-control ${styles.placeholder}`}
             id="exampleInputEmail2"
             aria-describedby="emailHelp"
-            {...register("lastName", { required: true })}
+            {...register('lastName', { required: true })}
           />
           {errors.lastName && (
             <span className="text-danger">{errors.lastName.message}</span>
@@ -151,7 +151,7 @@ const NewArtis = ({ setArtis }) => {
             className={`form-control ${styles.placeholder}`}
             id="exampleInputEmail3"
             aria-describedby="emailHelp"
-            {...register("email", { required: true })}
+            {...register('email', { required: true })}
           />
           {errors.email && (
             <span className="text-danger">{errors.email.message}</span>
@@ -170,15 +170,15 @@ const NewArtis = ({ setArtis }) => {
             className={`form-control ${styles.placeholder}`}
             id="exampleInputEmail4"
             aria-describedby="emailHelp"
-            {...register("password", {
-              required: "* Este campo es requerido",
+            {...register('password', {
+              required: '* Este campo es requerido',
               minLength: {
                 value: 8,
-                message: "* La contraseña debe contener al menos 8 caracteres",
+                message: '* La contraseña debe contener al menos 8 caracteres',
               },
               pattern: {
                 value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
-                message: "Debe contener una mayuscula y un numero",
+                message: 'Debe contener una mayuscula y un numero',
               },
             })}
           />
@@ -236,7 +236,7 @@ const NewArtis = ({ setArtis }) => {
         <button
           type="submit"
           disabled={!(image?.length > 0)}
-          className={"btn btn-primary"}
+          className={'btn btn-primary'}
         >
           CREAR ARTIS
         </button>

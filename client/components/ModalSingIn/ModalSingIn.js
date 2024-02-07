@@ -2,30 +2,30 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import { useEffect, useState } from 'react';
 
-import Login from '../Login/Login';
 import PropTypes from 'prop-types';
+import Login from '../Login/Login';
 import Register from '../Register/Register';
 import styles from './modalsingin.module.css';
 
-const 
-ModalSingIn = ({
-  isRegister, isLogin, idModal, activeRegister, activeLogin,
-}) => {
-  const [activeTab, setActiveTab] = useState();
+const
+  ModalSingIn = ({
+    isRegister, isLogin, idModal, activeRegister, activeLogin,
+  }) => {
+    const [activeTab, setActiveTab] = useState();
 
-  useEffect(() => {
-    if (activeRegister) {
-      setActiveTab(activeRegister);
-    }
-  }, [activeRegister]);
+    useEffect(() => {
+      if (activeRegister) {
+        setActiveTab(activeRegister);
+      }
+    }, [activeRegister]);
 
-  useEffect(() => {
-    if (activeLogin) {
-      setActiveTab(activeLogin);
-    }
-  }, [activeLogin]);
+    useEffect(() => {
+      if (activeLogin) {
+        setActiveTab(activeLogin);
+      }
+    }, [activeLogin]);
 
-  return (
+    return (
     <>
       <div className="modal fade" id={idModal} tabIndex="-1" aria-hidden="true" aria-labelledby="modalSingIn">
         <div className="modal-dialog modal-dialog-centered">
@@ -52,8 +52,8 @@ ModalSingIn = ({
         </div>
       </div>
     </>
-  );
-};
+    );
+  };
 
 ModalSingIn.propTypes = {
   isRegister: PropTypes.bool,

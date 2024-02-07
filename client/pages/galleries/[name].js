@@ -1,22 +1,22 @@
-import Router, { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import Router, { useRouter } from 'next/router';
+import { useContext, useEffect, useState } from 'react';
 
-import CardGallery from "../../components/CardGallery/CardGallery";
-import Footer from "../../components/Footer/Footer";
-import GeneralModal from "../../components/GeneralModal/GeneralModal";
-import Head from "next/head";
-import ModalPay from "../../components/ModalPay/ModalPay";
-import ModalSingIn from "../../components/ModalSingIn/ModalSingIn";
-import clientAxios from "../../config/clientAxios";
-import jwtDecode from "jwt-decode";
-import { parseCookies } from "nookies";
-import styles from "../../styles/Galleries.module.css";
+import Head from 'next/head';
+import jwtDecode from 'jwt-decode';
+import { parseCookies } from 'nookies';
+import CardGallery from '../../components/CardGallery/CardGallery';
+import Footer from '../../components/Footer/Footer';
+import GeneralModal from '../../components/GeneralModal/GeneralModal';
+import ModalPay from '../../components/ModalPay/ModalPay';
+import ModalSingIn from '../../components/ModalSingIn/ModalSingIn';
+import clientAxios from '../../config/clientAxios';
+import styles from '../../styles/Galleries.module.css';
 
 const Galleries = () => {
   const route = useRouter();
   const [data, setData] = useState();
   const [errorLocation, setErrorLocation] = useState(null);
-  const token = localStorage.getItem("accessToken");
+  const token = localStorage.getItem('accessToken');
   const user = token ? jwtDecode(token) : false;
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Galleries = () => {
     const desencryptedProvince = province;
     if (desencryptedProvince) {
       clientAxios(
-        `/galleries/artis/${route.query.name}/${desencryptedProvince}`
+        `/galleries/artis/${route.query.name}/${desencryptedProvince}`,
       )
         .then((res) => {
           setErrorLocation(null);
@@ -41,7 +41,7 @@ const Galleries = () => {
     <div className={styles.bgHome}>
       <Head>
         <title>
-          Galerias de {data ? data[0].idArtis : undefined} - Proyecto Galeria 
+          Galerias de {data ? data[0].idArtis : undefined} - Proyecto Galeria
         </title>
         <meta name="description" content="Proyecto Galeria" />
       </Head>
@@ -74,9 +74,9 @@ const Galleries = () => {
           )}
           {data?.length === 0 ? (
             <h2 className="text-center text-white">
-              <span style={{ color: "#D44F80", textTransform: "capitalize" }}>
+              <span style={{ color: '#D44F80', textTransform: 'capitalize' }}>
                 {Router.query.name}
-              </span>{" "}
+              </span>{' '}
               NO TIENE GALERIAS DISPONIBLES
             </h2>
           ) : (
