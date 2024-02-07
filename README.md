@@ -1,1 +1,1 @@
-# Proyecto-Galleria
+# Proyecto-Galeria

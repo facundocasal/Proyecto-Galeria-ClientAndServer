@@ -115,7 +115,7 @@ const getGallerieBygalleryName = async (req, res) => {
   }
 };
 
-// crear gallerias
+
 const createGalleries = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
